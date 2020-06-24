@@ -1,4 +1,4 @@
-# Stock-Analysis_Dashboard
+# Stock-Analysis-Dashboard
 WIP - Dashboard with stock price analysis (Volume, RSI, MACD)
 
 The goal is to create an interactive Dashboard, where the user can input which Stock to analyze and choose indocators.
