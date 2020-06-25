@@ -3,21 +3,20 @@ WIP - Dashboard with stock price analysis (Volume, RSI, MACD)
 
 The goal is to create an interactive Dashboard:
 - User can choose the stock
-- Daterange
+- Date range 
 - Indicators
 
-I the end the user should be able to download the result as a pdf or image
-
 ### To Do
-- make it interactive
-- deploy it with steamlit
 - use plotly to give more informations
+- add more indicators
+- make indicators interactive
 
 ### First Result
-![](Stock_analysis.png)
+![](Dashboard_1.0.png)
 
 
 ### libaries
 - numpy
 - pandas
 - matplotlib
+- streamlit
