@@ -39,7 +39,7 @@ The goal is to create an interactive Dashboard:
 ### Example
 ![](pictures/Dashboard_1.0.png)
 
-### New Version (real interactivety needs to be implemented)
+### New Version (real interactivity needs to be implemented)
 ![](pictures/Dashboard_1.1.png)
 
 
