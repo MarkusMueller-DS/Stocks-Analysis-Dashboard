@@ -37,7 +37,10 @@ The goal is to create an interactive Dashboard:
 5. Now you can choose the share with the ticker symbol and the date range.
 
 ### Example
-![](Dashboard_1.0.png)
+![](pictures/Dashboard_1.0.png)
+
+### New Version (real interactivety needs to be implemented)
+![](pictures/Dashboard_1.1.png)
 
 
 ### libaries
