@@ -6,6 +6,15 @@ The goal is to create an interactive Dashboard:
 - Date range 
 - Indicators
 
+### Available Indicators
+- Volumne
+- RSI
+- MACD
+- Bollinger Band
+- Money Flow Index (needs to be implemented)
+- SMA & EMA (needs to be implemented)
+
+
 ### To Do
 - use plotly to give more informations
 - add more indicators
@@ -16,6 +25,7 @@ The goal is to create an interactive Dashboard:
 ### Files
 - Stock_dashboard.ipynb: Jupyter notebook, to test the code 
 - dashboard_streamlit.py: file to run the dashboard in the webbrowser
+- dashboard_streamlit_interactive.py: file to run the dashboard with interactivity (needs to be implemented in the chart)
 
 ### How to run
 1. Set working directory to folder
