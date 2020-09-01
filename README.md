@@ -10,6 +10,8 @@ The goal is to create an interactive Dashboard:
 - use plotly to give more informations
 - add more indicators
 - make indicators interactive
+- add notations when basic trading strategies are present
+  - death cross, golden corss etc.
 
 ### Files
 - Stock_dashboard.ipynb: Jupyter notebook, to test the code 
