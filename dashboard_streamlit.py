@@ -30,12 +30,11 @@ st.write('You selected', end_date)
 
 # get the price of the share and save it into a DataFrame 
 df = yf.download(ticker_symbol, start_date.strftime('%Y-%m-%d'), end_date.strftime('%Y-%m-%d'), progress=False)
-df = df[['Adj Close', 'Volume']]
 
 ###################################
 # Calculate indocators
 
-# RSI
+## RSI
 delta = df['Adj Close'].diff()
 delta.dropna(inplace=True)
 up = delta.copy()
@@ -48,13 +47,30 @@ RS = AVG_gain / AVG_loss
 RSI = 100.0 - (100.0 / (1.0 + RS))
 df['RSI'] = RSI
 
-# MACD
+## MACD
 ema_12 = df['Adj Close'].ewm(span=12, adjust=False).mean()
 ema_26 = df['Adj Close'].ewm(span=26, adjust=False).mean()
 MACD = ema_12 - ema_26
 signal_line = MACD.ewm(span=9, adjust=False).mean()
 df['MACD'] = MACD
 df['MACD_signal'] = signal_line
+
+## Bollinger Band
+df['SMA_Boll'] = df['Adj Close'].rolling(window=20).mean()
+df['std_Boll'] = df['Adj Close'].rolling(window=20).std()
+df['upper_Boll'] = df['SMA_Boll'] + (df['std_Boll'] * 2)
+df['lower_Boll'] = df['SMA_Boll'] - (df['std_Boll'] * 2)
+
+## Money Flow Index (MFI)
+df['typical_price'] = (df['High'] + df['Low'] + df['Close']) / 3
+df['money_flow'] = df['typical_price'] * df['Volume']
+df['diff'] = df['typical_price'].diff(1)
+df['positive_money_flow'] = np.where(df['diff'] > 0, df['money_flow'], 0)
+df['negative_money_flow'] = np.where(df['diff'] < 0, df['money_flow'], 0)
+df['positive_money_flow_p'] = df['positive_money_flow'].rolling(window=14).sum()
+df['negative_money_flow_p'] = df['negative_money_flow'].rolling(window=14).sum()
+df['money_flow_ration'] = df['positive_money_flow_p'] / df['negative_money_flow_p']
+df['MFI'] = 100 - 100/(1 + df['money_flow_ration'])
 
 ##################################
 # Define plot
@@ -71,6 +87,8 @@ gs = gridspec.GridSpec(4, 1, height_ratios=[2,1,1,1])
     
 ax1 = plt.subplot(gs[0])
 ax1.plot(df.index, df['Adj Close'])
+ax1.fill_between(df.index, df['upper_Boll'], df['lower_Boll'], color='grey',  alpha=0.5)
+ax1.plot(df.index, df['SMA_Boll'], alpha=0.5)
 plt.ylabel('Price')
 ax1.set_title(f'{ticker_symbol} Stock Analysis')
 
@@ -95,9 +113,8 @@ plt.setp(ax1.get_xticklabels(), visible=False)
 plt.setp(ax2.get_xticklabels(), visible=False)
 plt.setp(ax3.get_xticklabels(), visible=False)
 
-st.pyplot()
-
-
+if st.button('Show Plot'):
+    st.pyplot()
 
 
 
