@@ -33,3 +33,4 @@ The goal is to create an interactive Dashboard:
 - pandas
 - matplotlib
 - streamlit
+- yfinance
