@@ -36,7 +36,7 @@ Some indicators that will be implemented:
 5. Now you can choose the share with the ticker symbol and the date range.
 
 ### Interactive Vesion of the dashboard
-![](pictures/Dashboard_1.1.png)
+![](pictures/Dashboard_2.0.png)
 
 ### libaries
 - numpy
