@@ -1,5 +1,7 @@
 # Stocks-Analysis-Dashboard
-Dashboard with stock price analysis
+Dashboard with stock price analysis.
+
+#### See the dashboard in action: https://youtu.be/eb-ccqK6bcg
 
 This is an interactive dashboard  where users can pick a stock ticker, the date range and indicators.
 The following indicators are currently implemented:
